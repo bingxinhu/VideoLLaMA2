@@ -149,10 +149,15 @@ def generate(image, video, message, chatbot, textbox_in, temperature, top_p, max
                     message.clear()
                     one_turn_chat[0] += "\n" + show_images
                 break
+    print("data: ", data)
+    print("show_images:", show_images)
+    print("one_turn_chat", one_turn_chat)
 
     message.append({'role': 'user', 'content': textbox_in})
+    print("input: ", message)
     text_en_out = handler.generate(data, message, temperature=temperature, top_p=top_p, max_output_tokens=max_output_tokens)
     message.append({'role': 'assistant', 'content': text_en_out})
+    print("input: ", message)
 
     one_turn_chat[1] = text_en_out
     chatbot.append(one_turn_chat)
